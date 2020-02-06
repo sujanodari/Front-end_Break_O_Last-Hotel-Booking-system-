@@ -8,6 +8,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 //rendering App component
 
-ReactDOM.render(<h1>sujan</h1>,document.getElementById("root"));
+ReactDOM.render(<App/>,document.getElementById("root"));
 
 
