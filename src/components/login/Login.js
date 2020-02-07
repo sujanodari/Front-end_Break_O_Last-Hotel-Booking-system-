@@ -1,10 +1,10 @@
 import React from 'react';
-import {link,Redirect} from 'react-router-dom';
+import {Link,Redirect} from 'react-router-dom';
 
 import axios from 'axios';
 import {
     Container, Col, Form,
-    FormGroup, Label, Input,
+    FormGroup,FormText, Label, Input,
     Button,
   } from 'reactstrap';
 
@@ -81,6 +81,7 @@ class Login extends React.Component{
             </FormGroup>
           </Col>
           <Button onClick={this.login}>Login</Button>
+          <FormText>Not yet a user? <Link to='/register'> Sign Up here!</Link></FormText>
         </Form>
       </Container>
         );
