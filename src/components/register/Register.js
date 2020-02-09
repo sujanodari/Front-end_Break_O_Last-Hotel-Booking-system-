@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Form, FormGroup, Label, Input, Container, FormText } from 'reactstrap'
+import { Button, Form, FormGroup, Label, Input, Container, CustomInput, FormText } from 'reactstrap'
 import { Link, Redirect } from 'react-router-dom'
 import axios from 'axios'
 
@@ -14,6 +14,8 @@ class Register extends React.Component{
             email:'',
             password: '',
             cPassword:'',
+            file:null,
+            profileImage:"",
             isRegistered: false
         }
     }
@@ -27,13 +29,40 @@ class Register extends React.Component{
     }
 
 
+    handleFileSelect=(e)=>{
+        this.setState({
+            file: e.target.files[0]
+        })
+    }
+
+   
+
     register=(e)=>{
-console.log("chalyo")
+
         //prevent default
         e.preventDefault();
-
+    
+        const formdata = new FormData()
+        formdata.append('profileImage', this.state.file)
+                
+        axios.post('http://localhost:3012/api/v1/users/profile', formdata, this.state.config)
+            .then((response) => {
+                localStorage.setItem('myImage',response.data.filename)     
+                
+                
+                var data = {
+                    username:this.state.username,
+                    gender: this.state.gender,
+                    phone: this.state.phone,
+                    address:this.state.address,
+                    email:this.state.email,
+                    password: this.state.password,
+                    cPassword:this.state.cPassword,
+                    profileImage:localStorage.getItem('myImage')
+    
+                }
       //using axois to hit api
-      axios.post('http://localhost:3012/api/v1/users/signup',this.state)
+      axios.post('http://localhost:3012/api/v1/users/signup',data)
       .then((response)=>{
 
         console.log(response.data)
@@ -49,9 +78,11 @@ console.log("chalyo")
             isRegistered: true
           })
           console.log(this.state)
-      }).catch((err)=>{console.log(err)})
+      }).catch((err)=>{console.log(err)
+    }).catch((err)=>console.log(err))
 
-    }
+    })
+}
 
 
     render(){
@@ -105,6 +136,10 @@ console.log("chalyo")
                     <Input type='password' name='cPassword' id='cPassword'
                         value={this.state.cPassword} onChange={this.handleChange} />
                 </FormGroup>
+                <FormGroup>
+                    <CustomInput type="file" id="userImage" onChange={this.handleFileSelect}/>
+                </FormGroup>
+
                 <Button color='primary' onClick={this.register}>Sign Up</Button>
                 <FormText>Already a user? <Link to='/'> Login here!</Link></FormText>
             </Form>
