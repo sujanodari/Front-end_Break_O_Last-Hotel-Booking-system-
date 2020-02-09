@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Component} from 'react';
 import {Link,Redirect} from 'react-router-dom';
 
 import axios from 'axios';
@@ -8,7 +8,7 @@ import {
     Button,
   } from 'reactstrap';
 
-class Login extends React.Component{
+class Login extends Component{
     constructor(props){
         super(props)
         this.state={
@@ -26,29 +26,37 @@ class Login extends React.Component{
     }
 
     login=(e)=>{
-
-        console.log(this.state)
         
         // url // data // headers
           axios.post('http://localhost:3012/api/v1/users/signin',this.state )
 
           .then(function(response){
-        
-            //console.log(response.data)
-        
-            //store the token in local storage of broser for future use 
-        
+            //store the token in local storage of broser for future use
+            console.log(response.data)     
             localStorage.setItem("user_token",response.data.usertoken)
-        
+           
+            
           })
           .catch(function(err){
-        
+           console.log(err)
+           // this.setState({ phone: '', password: '' })
           })
+            if(!(localStorage.getItem('user_token')==null)){
+              this.setState({
+                looged:true
+              })
+            }
+            
+
+
         
         }
     
 
     render(){
+      if(this.state.looged==true){
+        return <Redirect to='/dashboard' />
+      }
 
         return(
 <Container className="App">
