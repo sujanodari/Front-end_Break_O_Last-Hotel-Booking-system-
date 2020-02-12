@@ -8,6 +8,8 @@ import {
     Button,
   } from 'reactstrap';
 
+import "./Login.css";
+
 class Login extends Component{
     constructor(props){
         super(props)
@@ -60,6 +62,7 @@ class Login extends Component{
 
         return(
 <Container className="App">
+<h1 className="welcome">Welcome to Break-O-Last</h1>
         <h2>Sign In</h2>
         <Form className="form">
           <Col>
