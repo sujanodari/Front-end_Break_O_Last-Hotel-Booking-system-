@@ -86,6 +86,20 @@ class Profile extends React.Component{
              console.log(err)
             })      
           }
+
+          delete=(e)=>{
+            e.preventDefault();
+              Axios.delete('http://localhost:3012/api/v1/users/',this.state.config )
+              .then(function(response){
+                console.log(response.data)
+                if(response.data.status==="success") {
+                  return <Redirect to='/login' />
+                }    
+              })
+              .catch(function(err){
+               console.log(err)
+              })      
+            }
     render(){
         if (this.state.user === null) {
             return <h3>Loading ...</h3>
@@ -145,8 +159,13 @@ class Profile extends React.Component{
       </FormGroup>
       </Col>
       <Button variant="primary" type="submit" onClick={this.update}>Update</Button>
-    </Form>
 
+    </Form>
+    <br></br>
+    <h2>Delete Account</h2>
+    <Form>
+    <Button variant="primary" type="submit" onClick={this.delete}>Delete</Button>
+    </Form>
             </React.Fragment>
             <Footer />
           </div>
