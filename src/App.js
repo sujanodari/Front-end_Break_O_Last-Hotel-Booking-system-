@@ -6,6 +6,7 @@ import Login from './components/login/Login';
  import Dashboard from './components/dashboard/Dashboard'
  import About from './components/about/about'
  import Profile from './components/profile/profile'
+ import Book from './components/book/Book'
 
 
 function App(){
@@ -18,6 +19,7 @@ function App(){
             <Route exact path='/dashboard' component={Dashboard}/>
             <Route exact path='/about' component={About}/>
             <Route exact path='/profile' component={Profile}/>
+            <Route exact path='/book' component={Book}/>
             </Switch>
             </BrowserRouter>
      

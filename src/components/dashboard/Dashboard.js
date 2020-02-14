@@ -5,6 +5,7 @@ import RoomList from './RoomList';
 import Navigation from './Navigation';
 import Footer from './Footer';
 import Axios from 'axios';
+import { Redirect } from 'react-router'
 class Dashboard extends React.Component{
 
 
@@ -30,6 +31,11 @@ class Dashboard extends React.Component{
 
 
     render(){
+         if (localStorage.getItem('user_token')===null) {
+           return( <Redirect to={{
+                pathname: '/'
+              }}/>)
+            } else{
         return(
             <div>
               <React.Fragment>
@@ -40,6 +46,7 @@ class Dashboard extends React.Component{
             <Footer />
           </div>
         )
+        }
     }
 }
 

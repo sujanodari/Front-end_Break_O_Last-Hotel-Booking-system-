@@ -32,6 +32,9 @@ class Navigation extends Component {
                             <NavLink href='/dashboard'>Dashboard</NavLink>
                         </NavItem>
                         <NavItem>
+                            <NavLink href='/book'>Booked</NavLink>
+                        </NavItem>
+                        <NavItem>
                             <NavLink href='/profile'>Profile</NavLink>
                         </NavItem>
                         <NavItem>

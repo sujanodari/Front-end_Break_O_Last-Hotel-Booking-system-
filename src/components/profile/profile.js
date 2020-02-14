@@ -6,6 +6,7 @@ import Navigation from '../dashboard/Navigation';
 import Footer from '../dashboard/Footer';
 import Axios from 'axios';
 import "../dashboard/Room.css";
+import { Redirect } from 'react-router'
 class Profile extends React.Component{
 
 
@@ -101,6 +102,11 @@ class Profile extends React.Component{
               })      
             }
     render(){
+      if (localStorage.getItem('user_token')===null) {
+        return( <Redirect to={{
+             pathname: '/'
+           }}/>)
+         } else{
         if (this.state.user === null) {
             return <h3>Loading ...</h3>
         } else {
@@ -148,6 +154,7 @@ class Profile extends React.Component{
         <img className="profilePhoto" src={"http://localhost:3012/profile/"+ this.state.user.profileImage}/>
       </FormGroup>
       </Row>
+      <Button variant="primary" type="submit" >Update</Button>
     </Form>
     
     <Form>
@@ -171,6 +178,7 @@ class Profile extends React.Component{
           </div>
         )
         }
+      }
     }
 }
 
