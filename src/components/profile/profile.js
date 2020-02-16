@@ -6,7 +6,7 @@ import Navigation from '../dashboard/Navigation';
 import Footer from '../dashboard/Footer';
 import Axios from 'axios';
 import "../dashboard/Room.css";
-import { Redirect } from 'react-router'
+import { Redirect } from 'react-router-dom'
 class Profile extends React.Component{
 
 
@@ -94,7 +94,8 @@ class Profile extends React.Component{
               .then(function(response){
                 console.log(response.data)
                 if(response.data.status==="success") {
-                  return <Redirect to='/login' />
+                  localStorage.removeItem('user_token');
+                  return <Redirect to='/' />
                 }    
               })
               .catch(function(err){

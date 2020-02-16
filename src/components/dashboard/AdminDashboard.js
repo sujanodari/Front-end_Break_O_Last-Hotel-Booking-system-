@@ -3,7 +3,8 @@ import React, { Component } from 'react'
 import { Button, FormGroup, Label, Input, Row, Col, CustomInput, FormText } from 'reactstrap'
 import axios from 'axios'
 import Footer from './Footer';
-import { Redirect } from 'react-router'
+import { Link, Redirect } from 'react-router-dom'
+
 class AdminDasbhoard extends React.Component{
     constructor(props){
         super(props)
@@ -34,7 +35,11 @@ class AdminDasbhoard extends React.Component{
         })
     }
 
-   
+    handleLogout = (e) => {
+        e.preventDefault();
+        localStorage.removeItem('admin_token');
+        this.props.history.push('/admin')
+    }
 
     addRoom=(e)=>{
 
@@ -146,6 +151,13 @@ class AdminDasbhoard extends React.Component{
                 <Col md={4}>
                 <Button color='primary' onClick={this.addRoom}>Add Room</Button>
                 </Col>
+                <Col md={4}>
+                <FormText>View Rooms <Link to='/rooms'> Click Here!</Link></FormText>
+                 </Col>
+                 <Col md={4}>
+                <Button color='primary'  onClick={this.handleLogout}>Logout</Button>
+                </Col>
+                
             </Row>
             </React.Fragment>
             <Footer />

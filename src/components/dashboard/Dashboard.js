@@ -31,7 +31,7 @@ class Dashboard extends React.Component{
 
 
     render(){
-         if (localStorage.getItem('user_token')===null) {
+         if (localStorage.getItem('user_token')===null){
            return( <Redirect to={{
                 pathname: '/'
               }}/>)

@@ -6,6 +6,7 @@ import AdminLogin from './components/login/AdminLogin';
  import Register from './components/register/Register';
  import Dashboard from './components/dashboard/Dashboard'
  import AdminDashboard from './components/dashboard/AdminDashboard'
+ import AdminRooms from './components/dashboard/AdminRooms'
  import About from './components/about/about'
  import Profile from './components/profile/profile'
  import Book from './components/book/Book'
@@ -17,6 +18,7 @@ function App(){
             <BrowserRouter>
             <Switch>
             <Route exact path='/admin' component={AdminLogin} />
+            <Route exact path='/rooms' component={AdminRooms} />
             <Route exact path='/' component={Login} />
             <Route exact path='/register' component={Register}/>
             <Route exact path='/dashboard' component={Dashboard}/>
