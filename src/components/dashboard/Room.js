@@ -50,7 +50,7 @@ export default class Room extends Component {
                  <td>{room.phone}</td>
                  <td>{room.noOfBed}</td>
                  <td>{room.address}</td>
-                 <td><img className="photo" src={"http://localhost:3012/room/"+ room.roomImage}/></td>
+                 <td><img className="photo" src={"http://localhost:3012/profile/"+ room.roomImage}/></td>
                  <td>{room.description}</td>
                  <td><Input type="date" name="date" id="exampleDate"  onChange={this.dateHandelChange} hint="Enter Date"/>
                 </td>

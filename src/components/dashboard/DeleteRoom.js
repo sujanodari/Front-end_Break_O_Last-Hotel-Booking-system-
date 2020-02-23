@@ -22,8 +22,8 @@ export default class DeleteRoom extends Component {
             e.preventDefault();
               Axios.delete('http://localhost:3012/api/v1/admin/rooms/'+this.state.roomID,this.state.config )
               .then(function(response){
-                console.log(response.data)
-                window.location.reload();    
+               window.location.reload(); 
+                this.props.history.push('/rooms');   
               })
               .catch(function(err){
                console.log(err)
@@ -40,7 +40,7 @@ export default class DeleteRoom extends Component {
                  <td>{room.phone}</td>
                  <td>{room.noOfBed}</td>
                  <td>{room.address}</td>
-                 <td><img className="photo" src={"http://localhost:3012/room/"+ room.roomImage}/></td>
+                 <td><img className="photo" src={"http://localhost:3012/profile/"+ room.roomImage}/></td>
                  <td>{room.description}</td>
                 <td><Button variant="primary" type="submit" onClick={ this.state.roomID=room.id, this.delete} >Delete</Button></td>
                 

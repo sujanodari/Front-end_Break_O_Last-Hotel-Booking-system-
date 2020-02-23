@@ -49,7 +49,7 @@ export default class Room extends Component {
                  <td>{room.phone}</td>
                  <td>{room.noOfBed}</td>
                  <td>{room.address}</td>
-                 <td><img className="photo" src={"http://localhost:3012/room/"+ room.roomImage}/></td>
+                 <td><img className="photo" src={"http://localhost:3012/profile/"+ room.roomImage}/></td>
                  <td>{room.description}</td>
                  <td>{book.date}</td>
                 <td><Button variant="primary" type="submit" onClick={this.state.bookId=book.id,this.book } >Delete Book</Button></td>

@@ -68,7 +68,7 @@ class AdminDasbhoard extends React.Component{
       axios.post('http://localhost:3012/api/v1/hotel/rooms',data)
       .then((response)=>{
 
-        console.log(response.data)
+       
           //setting registered to true to redirect to login component
           this.setState({
                      hotelName:'',
@@ -80,7 +80,7 @@ class AdminDasbhoard extends React.Component{
                     
     
           })
-          console.log(this.state)
+          this.props.history.push('/rooms');  
       }).catch((err)=>{console.log(err)
     }).catch((err)=>console.log(err))
 

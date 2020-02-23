@@ -7,13 +7,14 @@ import Footer from '../dashboard/Footer';
 import Axios from 'axios';
 import "../dashboard/Room.css";
 import { Redirect } from 'react-router-dom'
+
 class Profile extends React.Component{
 
 
     constructor(props){
         super(props)
- 
         this.state = {
+            delete:false,
             user: null,
             password:'',
             config: {
@@ -95,7 +96,9 @@ class Profile extends React.Component{
                 console.log(response.data)
                 if(response.data.status==="success") {
                   localStorage.removeItem('user_token');
-                  return <Redirect to='/' />
+                  window.location.reload(); 
+               
+                  
                 }    
               })
               .catch(function(err){

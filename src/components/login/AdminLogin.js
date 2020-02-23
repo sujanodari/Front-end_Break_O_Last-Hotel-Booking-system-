@@ -29,13 +29,15 @@ class AdminLogin extends Component{
     }
 
     login=(e)=>{
-        
+        var data={
+          phone:this.state.phone,
+          password:this.state.password
+        }
         // url // data // headers
-          axios.post('http://localhost:3012/api/v1/admin/signin',this.state )
+          axios.post('http://localhost:3012/api/v1/admin/signin',data )
 
           .then(function(response){
-            //store the token in local storage of broser for future use
-            console.log(response.data)     
+            //store the token in local storage of broser for future use 
             localStorage.setItem("admin_token",response.data.usertoken)
            
             
