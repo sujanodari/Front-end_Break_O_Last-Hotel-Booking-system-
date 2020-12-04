@@ -3,12 +3,13 @@ import {Link,Redirect} from 'react-router-dom';
 
 import axios from 'axios';
 import {
-    Container, Col, Form,
+   Row, Col,
     FormGroup,FormText, Label, Input,
     Button,
   } from 'reactstrap';
 
 import "./Login.css";
+import Footer from '../dashboard/Footer';
 
 class Login extends Component{
     constructor(props){
@@ -43,6 +44,7 @@ class Login extends Component{
            console.log(err)
            // this.setState({ phone: '', password: '' })
           })
+
             if(!(localStorage.getItem('user_token')==null)){
               this.setState({
                 looged:true
@@ -59,13 +61,18 @@ class Login extends Component{
       if(this.state.looged==true){
         return <Redirect to='/dashboard' />
       }
+      if(!(localStorage.getItem('user_token')==null)){
+        return <Redirect to='/dashboard' />
+      }
 
         return(
-<Container className="App">
-<h1 className="welcome">Welcome to Break-O-Last</h1>
+          <div>
+          <React.Fragment>  
+        <h1 className="welcome">Welcome to Break-O-Last</h1>
         <h2>Sign In</h2>
-        <Form className="form">
-          <Col>
+      
+        <Row form>
+         <Col md={6}>
             <FormGroup>
               <Label>Phone</Label>
               <Input
@@ -78,7 +85,7 @@ class Login extends Component{
               />
             </FormGroup>
           </Col>
-          <Col>
+          <Col md={6}>
             <FormGroup>
               <Label for="examplePassword">Password</Label>
               <Input
@@ -91,10 +98,16 @@ class Login extends Component{
               />
             </FormGroup>
           </Col>
+          <Col md={4}>
           <Button onClick={this.login}>Login</Button>
+          </Col>
+          <Col md={4}>
           <FormText>Not yet a user? <Link to='/register'> Sign Up here!</Link></FormText>
-        </Form>
-      </Container>
+          </Col>
+        </Row>
+      </React.Fragment>
+      <Footer />
+      </div>
         );
     }
 

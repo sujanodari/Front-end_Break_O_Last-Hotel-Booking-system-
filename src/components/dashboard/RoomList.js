@@ -43,6 +43,7 @@ export default class RoomList extends Component {
                        <th>Address</th>
                        <th>Room Image</th>
                        <th>Description</th>
+                       <th>Enter date to book</th>
                          </tr>
                         </thead>
                         <tbody>
